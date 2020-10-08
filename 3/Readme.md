@@ -60,16 +60,44 @@ Question 4
 Question 5
 ----------
 
+- build an empty paragrid and use cross validation   
 (https://stackoverflow.com/questions/45420112/cross-validation-in-pyspark)
 
 Question 6
 ----------
 
+- add a scalar stage to the pipeline   
+(https://spark.apache.org/docs/latest/ml-features.html#standardscaler)
+- find corfficient of the model   
+(https://stackoverflow.com/questions/38751536/how-to-access-spark-pipelinemodel-parameters)
+
 Question 7
 ----------
 
+find the column with maximum of MSE improvement in the test list  
+almost the same to the previous pipeline  
+a single for loop can work
+
+***example:***  
+***The code is simply a pseudo code, it's not the complete implement***
+
+        def find_best_pred(start, test, target):
+            for i in test:
+                tmp = start+i
+                va = vectorAssembler(tmp, 'features')
+                pipe = pipeline(stages=[va, lr]).fit(train)
+                tmp_mse = evaluate(pipe.apply(train))
+                if min_mse > tmp_mse: 
+                    res = i
+                    min_mse = tmp_mse
+            return res
+
+
 Question 8
 ----------
+
+ask for full iterations  
+another for loop of Question 7 is sufficient  
 
 Extra credit
 ------------
